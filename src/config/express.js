@@ -22,10 +22,13 @@ app.use(morgan(logs));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// gzip compression
 app.use(compress());
 
-app.use(helmet());
+app.use(
+    helmet({
+        frameguard: false,
+    })
+);
 app.use(cors());
 
 app.use(passport.initialize());
